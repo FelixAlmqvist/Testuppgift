@@ -45,6 +45,6 @@ public class TestCases {
         tmp.calculateResult();
         Assertions.assertEquals("Encyklopedia",tmp.getLongestWord_());
     }
-
+//test
 
 }
