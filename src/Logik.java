@@ -22,8 +22,14 @@ public class Logik {
         if(isListempty())
             return;
 
+
         for (String s : userInput_) {
 
+            s = s.replaceAll("[^\\p{L}\\p{Z}]","");
+            if(isStringEmpty(s))
+            {
+                continue; //kom inte på ett bra sätt att ta bort den tomma strängen. Spara alla index för eventuellt tomma rader kändes onödigt och kan räkna en tom rad som en rad
+            }
             String[] tmp = s.split(" ");
             wordCount_ += tmp.length;
             for (String s2: tmp)
@@ -42,6 +48,12 @@ public class Logik {
         userInput_.removeLast(); //Ta bort stringen med stop då den inte ska med till logiken
 
         return userInput_.isEmpty(); //kolla igen så att det finns någon logik att gå igenom
+    }
+
+    private boolean isStringEmpty(String s)
+    {
+        String tmp = s.replaceAll(" ", "");
+        return tmp.isEmpty();
     }
 
     public boolean isUserFinished(String input, String endCommand)

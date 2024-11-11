@@ -17,7 +17,6 @@ public class Listener {
         System.out.println("Skriv stop när du känner dig färdig");
         while(!myLogik.isUserFinished(line_, endCommand))
         {
-
             line_ = listener_.nextLine();
             myLogik.addLine(line_);
         }

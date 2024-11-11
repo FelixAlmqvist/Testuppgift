@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 public class TestCases {
 
-    String[] strings = {"Testar", "result", "Encyklopedia ordet till vänster ska vara det längsta","dubbelkolla att den inte räknar med mellanrum", "stop"};
+    String[] strings = {"Testar", "result", "Encyklopedia ordet till vänster ska vara det längsta!","dubbelkolla att den inte räknar med mellanrum?", "stop"};
     Logik tmp = new Logik(strings);
 
     @Test
@@ -45,6 +45,14 @@ public class TestCases {
         tmp.calculateResult();
         Assertions.assertEquals("Encyklopedia",tmp.getLongestWord_());
     }
-//test
+
+    @Test
+    public void LogikTestSpecialCharacters()
+    {
+        tmp.addLine("Encyklopediaa??????"); //ta längsta ordet från vår input och lägg till special karaktärer (la till ett extra a så det är den nya instancen som visas)
+        tmp.calculateResult();
+        Assertions.assertFalse(tmp.getLongestWord_().contains("?")); //kolla om de har tagits bort från det längsta ordet
+    }
+
 
 }
